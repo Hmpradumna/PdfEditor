@@ -1,0 +1,62 @@
+:root{
+  --bg:#030416;
+  --panel:#071028;
+  --muted:#98a0b3;
+  --accent:linear-gradient(90deg,#7c3aed,#06b6d4);
+  --glass: rgba(255,255,255,0.03);
+  --neon: #6ee7b7;
+  --radius:14px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+html,body,#app{height:100%;margin:0;background:radial-gradient(ellipse at 10% 10%, rgba(10,20,40,0.6), transparent 20%), var(--bg);color:#e6eef6}
+.header{
+  display:flex;align-items:center;justify-content:space-between;padding:18px 28px;
+  border-bottom:1px solid rgba(255,255,255,0.03);backdrop-filter: blur(6px);
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,#7dd3fc,#a78bfa);display:flex;align-items:center;justify-content:center;font-weight:700;color:#031426;
+  box-shadow: 0 6px 30px rgba(124,58,237,0.12), 0 4px 12px rgba(6,182,212,0.08);
+}
+.controls{display:flex;align-items:center;gap:12px}
+.btn{
+  background:var(--glass);border:1px solid rgba(255,255,255,0.04);padding:8px 12px;border-radius:10px;color:inherit;cursor:pointer;
+}
+.btn.full{display:block;width:100%;margin-bottom:8px}
+.select-inline{font-size:13px;color:var(--muted);padding-left:6px}
+.main{display:flex;gap:18px;padding:22px;min-height:calc(100% - 150px)}
+.left{width:320px;display:flex;flex-direction:column;gap:12px}
+.dropzone{
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px dashed rgba(255,255,255,0.04);padding:18px;border-radius:12px;display:flex;align-items:center;justify-content:center;height:150px;
+}
+.dropInner{text-align:center;color:var(--muted)}
+.toolpanel{background:var(--panel);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);min-height:320px}
+.toolrow{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.tool{padding:8px 10px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.02);cursor:pointer}
+.tool.active{background:linear-gradient(90deg,#0ea5a7, #7c3aed);color:#021024;box-shadow:0 6px 18px rgba(124,58,237,0.14)}
+.pagesList{margin-top:8px;height:280px;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.pageThumb{height:60px;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.03);display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.015);cursor:pointer;padding:6px}
+.viewer{flex:1;display:flex;flex-direction:column;gap:12px}
+.canvasWrap{position:relative;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));border-radius:12px;padding:18px;display:flex;align-items:center;justify-content:center;min-height:60vh;border:1px solid rgba(255,255,255,0.03)}
+#baseCanvas{max-width:100%;border-radius:8px;box-shadow: 0 10px 40px rgba(2,6,23,0.6)}
+.overlay{position:absolute;left:18px;top:18px;z-index:5;touch-action:none}
+.textLayer{position:absolute;left:18px;top:18px;z-index:6;pointer-events:none}
+.bottomBar{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;border-radius:10px;background:rgba(0,0,0,0.15)}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.rightInline{display:flex;gap:8px;align-items:center}
+.footer{padding:14px 22px;text-align:center;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+.textbox{
+  position:absolute;padding:6px 8px;border-radius:6px;background:rgba(255,255,255,0.04);border:1px solid rgba(0,0,0,0.2);min-width:80px;color:#e6eef6;
+  resize:none;outline:none;border:none;font-size:14px
+}
+.redactRect{
+  position:absolute;background:#000;border:1px solid rgba(255,255,255,0.02);opacity:0.95
+}
+@media (max-width:900px){
+  .left{display:none}
+  .main{padding:12px}
+}

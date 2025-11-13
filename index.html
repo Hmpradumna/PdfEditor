@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Futuristic PDF & Image Studio</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Libraries (CDN) -->
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.6.172/pdf.min.js"></script>
+  <script src="https://unpkg.com/browser-image-compression@1.0.17/dist/browser-image-compression.js"></script>
+</head>
+<body>
+  <div id="app" class="app">
+    <header class="header">
+      <div class="brand">
+        <div class="logo">FP</div>
+        <h1>Futuristic PDF & Image Studio</h1>
+      </div>
+      <div class="controls">
+        <label class="btn">
+          Upload
+          <input id="fileInput" type="file" accept="application/pdf,image/*" multiple hidden>
+        </label>
+        <button id="downloadPdfBtn" class="btn">Export PDF</button>
+        <div class="select-inline">
+          <label>Quality
+            <input id="qualityRange" type="range" min="0.2" max="1" step="0.05" value="0.9">
+          </label>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <aside class="left">
+        <div id="dropZone" class="dropzone">
+          <div class="dropInner">
+            <p>Drag & drop files here<br><span class="muted">PDF, JPG, PNG</span></p>
+            <small class="muted">Or click Upload</small>
+          </div>
+        </div>
+
+        <div class="toolpanel">
+          <div class="toolrow">
+            <button class="tool active" data-tool="pan">Pan</button>
+            <button class="tool" data-tool="draw">Draw</button>
+            <button class="tool" data-tool="text">Text</button>
+            <button class="tool" data-tool="redact">Redact</button>
+            <button class="tool" data-tool="clear">Clear Annotations</button>
+          </div>
+
+          <div class="toolrow">
+            <button id="imgToPdfBtn" class="btn full">Images → PDF</button>
+            <button id="pdfToImgBtn" class="btn full">PDF → Images</button>
+            <button id="compressBtn" class="btn full">Compress & Export</button>
+          </div>
+
+          <div class="muted small">Pages</div>
+          <div id="pagesList" class="pagesList"></div>
+        </div>
+      </aside>
+
+      <section class="viewer">
+        <div id="canvasWrap" class="canvasWrap">
+          <!-- base canvas where PDF page/image is rendered -->
+          <canvas id="baseCanvas"></canvas>
+          <!-- overlay for annotations (draw, redact, text) -->
+          <canvas id="overlayCanvas" class="overlay"></canvas>
+          <div id="textLayer" class="textLayer"></div>
+        </div>
+
+        <div class="bottomBar">
+          <div id="pageInfo">No document loaded</div>
+          <div class="rightInline">
+            <button id="prevBtn" class="btn">Prev</button>
+            <button id="nextBtn" class="btn">Next</button>
+            <button id="downloadPageImg" class="btn">Download Page Image</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <small>All processing runs locally in your browser • Works best on desktop</small>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
